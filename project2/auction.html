@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auctions | The Bidder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auctions Section -->
+    <section class="auctions">
+        <h1>Current Auctions</h1>
+        <p>Browse and bid on exciting auctions below.</p>
+
+        <div class="auction-items">
+            <div class="auction-item">
+                <img src="wt.jpg" alt="Vintage Watch">
+                <h3>Vintage Watch</h3>
+                <p>Current Bid: <span class="bid-amount">$100</span></p>
+                <button class="bid-btn" onclick="placeBid(1)">Place a Bid</button>
+            </div>
+            <div class="auction-item">
+                <img src="THAR.jpeg" alt="Classic Car Model">
+                <h3>Classic Car THAR Model</h3>
+                <p>Current Bid: <span class="bid-amount">$5000</span></p>
+                <button class="bid-btn" onclick="placeBid(2)">Place a Bid</button>
+            </div>
+            <div class="auction-item">
+                <img src="VASE.jpg" alt="Antique Vase">
+                <h3>Antique Vase</h3>
+                <p>Current Bid: <span class="bid-amount">$250</span></p>
+                <button class="bid-btn" onclick="placeBid(3)">Place a Bid</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Bidder. All Rights Reserved.</p>
+        <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function placeBid(auctionId) {
+            let currentBidElement = document.querySelector(`.auction-item:nth-child(${auctionId}) .bid-amount`);
+            let currentBid = parseInt(currentBidElement.innerText.replace("$", ""));
+            let newBid = prompt(`Current Bid: $${currentBid}\nEnter your bid:`);
+
+            if (newBid && !isNaN(newBid) && parseInt(newBid) > currentBid) {
+                currentBidElement.innerText = `$${newBid}`;
+                alert("Bid placed successfully!");
+            } else {
+                alert("Invalid bid. Please enter a higher amount.");
+            }
+        }
+        
+    </script>
+    
+
+</body>
+</html>
